@@ -33,15 +33,31 @@ post '/posts/new' do
   end
 end
 
-get '/posts/:post_id/edit' do
+get '/posts/:id/edit' do
   @post = Post.find_by(id: params[:post_id])
   erb :"/posts/edit"
 end
 
-put '/posts/:post_id/edit' do
+put '/posts/:post_id' do
   @post = Post.find_by(id: params[:post_id])
   @post.update_attributes(params[:post])
   redirect '/users/current_user.id'
 end
 
+delete '/posts/:id' do
+  @post = Post.find_by(id: params[:id])
+  @post_tag = PostTag.find_by(post_id: params[:id])
+  if @post.user == current_user
+    @post_tag.destroy
+    @post.destroy
+
+    if request.xhr?
+      status 200
+    else
+      redirect '/posts'
+    end
+  else
+    erb :'/unauthorized'
+  end
+end
 

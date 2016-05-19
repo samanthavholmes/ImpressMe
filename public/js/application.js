@@ -35,7 +35,18 @@ $(document).ready(function() {
  })
  $(".posts").on("submit", ".new-comment-form", function(e){
   e.preventDefault();
-  debugger;
  $('.new-comment-form').replaceWith('.new-comment-link')
+ })
+ $('.delete-post-form').on("submit", function(e){
+  e.preventDefault();
+  var $delete_submit = $(this)
+  var postId = this.parentElement.id
+  $.ajax({
+    type: "delete",
+    url: "/posts/" + postId
+  }).done(function(){
+    $delete_submit.closest('div').hide();
+    alert("The post was deleted.");
+  });
  })
 });

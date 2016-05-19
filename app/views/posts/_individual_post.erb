@@ -22,7 +22,10 @@
 
   <% if logged_in? && current_user.id == post.user_id %>
   <a href="/posts/<%=post.id%>/edit">Edit Post</a>
-  <p>Delete</p>
+  <form id = "delete<%=post.id%>" class= "delete-post-form" action= '/posts/<%=post.id%>' method= "post">
+      <input type= "hidden" name="_method" value="delete">
+      <input type= "submit" value = "Delete Post">
+    </form>
   <% end %>
 
 </div>
