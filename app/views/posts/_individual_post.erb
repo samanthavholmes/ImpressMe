@@ -9,7 +9,7 @@
     <% end %>
 <h4>Posted by <a href= "/posts/<%=post.user.id%>"><%= post.user.username %></a></h4>
 
-  <% if logged_in? && !current_user.liked_post?(post) %>
+  <% if logged_in? && !current_user.liked_post?(post) && current_user != post.user %>
   <form class= "like-button" method="get" action="/posts/<%= post.id%>/likes/new">
     <button type="submit">Like</button>
   <% end %>
