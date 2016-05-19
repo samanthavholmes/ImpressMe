@@ -1,0 +1,14 @@
+<div class = "container" id="<%= post.id %>">
+  <li><h2><%= post.body %></h2>
+  <h3><%= post.caption %></h3>
+  <% post.comments.each do |comment| %>
+    <li><%= comment.body %></li>
+    <% end %>
+<h4>Posted by <a href= "/posts/<%=post.user.id%>"><%= post.user.username %></a></h4>
+
+  <form class= "like-button" method="get" action="/posts/<%= post.id%>/likes/new">
+    <button type="submit">Like</button>
+    <h5 class= "like-count"><%= post.likes.length %></h5>
+  </form>
+
+</div>
