@@ -5,5 +5,6 @@ class CreateTags < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    add_index :tags, :body
   end
 end
