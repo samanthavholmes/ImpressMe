@@ -20,4 +20,9 @@
     <h5 class= "like-count"><%= post.likes.length %> likes </h5>
   </form>
 
+  <% if logged_in? && current_user.id == post.user_id %>
+  <a href="/posts/<%=post.id%>/edit">Edit Post</a>
+  <p>Delete</p>
+  <% end %>
+
 </div>
