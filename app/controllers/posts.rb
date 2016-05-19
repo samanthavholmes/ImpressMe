@@ -8,7 +8,7 @@ get '/posts/new' do
 end
 
 post '/posts/new' do
-  # if logged_in?
+  if logged_in?
     @post = Post.new(params[:post].merge(user: current_user))
     if @post.save
       redirect '/posts'
@@ -16,8 +16,8 @@ post '/posts/new' do
       @errors = @post.errors.full_messages
       erb :'/posts/new'
     end
-  # else
-  #   halt 403
-  #   erb :'/unauthorized'
-  # end
+  else
+    halt 403
+    erb :'/unauthorized'
+  end
 end

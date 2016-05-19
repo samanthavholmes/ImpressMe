@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :likes
   has_many :liked_posts, through: :likes, source: :post
+
+  def liked_post?(post)
+    self.likes.find_by(post_id: post.id)
+  end
 end

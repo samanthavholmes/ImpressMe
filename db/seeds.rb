@@ -6,12 +6,20 @@ end
   Post.create!(body: Faker::Lorem.paragraph, caption: Faker::Lorem.sentence, user_id: Faker::Number.between(1,30))
 end
 
+40.times do
+  Post.create!(body: Faker::Placeholdit.image, caption: Faker::Lorem.sentence, user_id: Faker::Number.between(1,30))
+end
 20.times do
   Comment.create!(body: Faker::Lorem.sentence, user_id:  Faker::Number.between(1,30), post_id: Faker::Number.between(1,40))
 end
 
-15.times do
+50.times do
   Tag.create!(body: Faker::Commerce.color)
+end
+
+
+25.times do
+  PostTag.create!(tag_id: Faker::Number.between(1,50), post_id: Faker::Number.between(1,40))
 end
 
 15.times do

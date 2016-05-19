@@ -1,9 +1,9 @@
 <h1 class = "title">Impress Me!</h1>
 
-<!--   <%#if logged_in? %>
+  <% if logged_in? %>
     <h4><a id = "new-post-link" href= '/posts/new'>Post your work!</a></h4>
-  <%#end %>
- -->
+  <% end %>
+
   <ul>
     <% @posts.reverse.each do |post| %>
       <%= erb :'/posts/_individual_post', layout: false, locals: {post: post} %>
