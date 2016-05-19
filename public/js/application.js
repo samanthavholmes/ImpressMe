@@ -11,4 +11,14 @@ $(document).ready(function() {
     $(likes).text(likeCount);
   })
  })
+ $('#liked-posts-link').on("click", function(e){
+  e.preventDefault();
+  $("#original-posts").hide();
+  $("#liked-posts").show();
+ })
+ $('#original-posts-link').on("click", function(e){
+  e.preventDefault();
+  $("#liked-posts").hide();
+  $("#original-posts").show();
+ })
 });
