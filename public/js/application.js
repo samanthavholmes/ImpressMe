@@ -23,14 +23,19 @@ $(document).ready(function() {
  })
  $('.new-comment-link').on("click", function(e){
   e.preventDefault();
-  var post = e.target.closest('div')
   var clicked = e.target
+  var postId = e.target.closest('div').id
   var url = $(e.target).attr("href")
   $.ajax({
     url: url,
   }).done(function(response){
     $(clicked).hide();
-    $(post).append(response);
+    $('#' + postId).append(response);
   })
+ })
+ $(".posts").on("submit", ".new-comment-form", function(e){
+  e.preventDefault();
+  debugger;
+ $('.new-comment-form').replaceWith('.new-comment-link')
  })
 });

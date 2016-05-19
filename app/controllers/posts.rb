@@ -22,6 +22,7 @@ post '/posts/new' do
     @post = Post.new(params[:post].merge(user: current_user))
     if @post.save
       @post.tags.build_from_string(params[:tag])
+    binding.pry
       redirect '/posts'
     else
       @errors = @post.errors.full_messages

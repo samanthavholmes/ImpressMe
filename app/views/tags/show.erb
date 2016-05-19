@@ -1,0 +1,7 @@
+<h1>All posts with tag <%= @tag.body %></h1>
+
+  <ul id ="tagged-posts">
+    <% @tag.posts.reverse.each do |post| %>
+    <%= erb :'/posts/_individual_post', layout: false, locals: {post: post} %>
+  <% end %>
+  </ul>
