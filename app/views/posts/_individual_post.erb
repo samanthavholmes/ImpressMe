@@ -10,7 +10,7 @@
 <h4>Posted by <a href= "/users/<%=post.user.id%>"><%= post.user.username %></a></h4>
 
   <% if logged_in? %>
-    <h4><a id = "new-comment-link" href= '/posts/<%=post.id%>/comments/new'>Add comment</a></h4>
+    <h4><a class = "new-comment-link" href= '/posts/<%=post.id%>/comments/new'>Add comment</a></h4>
   <% end %>
 
   <% if logged_in? && !current_user.liked_post?(post) && current_user != post.user %>

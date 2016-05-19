@@ -17,7 +17,6 @@ get '/posts/:id' do
   erb :'/posts/index'
 end
 
-
 post '/posts/new' do
   if logged_in?
     @post = Post.new(params[:post].merge(user: current_user))

@@ -1,6 +1,10 @@
 get '/posts/:post_id/comments/new' do
   @post = Post.find_by(id: params[:post_id])
-  erb :"/comments/new", layout: false, locals: {post: @post}
+  if request.xhr?
+    erb :"/comments/new", layout: false, locals: {post: @post}
+  else
+    erb :"/comments/new", layout: false, locals: {post: @post}
+  end
 end
 
 post '/posts/:post_id/comments/new' do

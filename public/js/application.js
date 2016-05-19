@@ -21,4 +21,16 @@ $(document).ready(function() {
   $("#liked-posts").hide();
   $("#original-posts").show();
  })
+ $('.new-comment-link').on("click", function(e){
+  e.preventDefault();
+  var post = e.target.closest('div')
+  var clicked = e.target
+  var url = $(e.target).attr("href")
+  $.ajax({
+    url: url,
+  }).done(function(response){
+    $(clicked).hide();
+    $(post).append(response);
+  })
+ })
 });
