@@ -25,3 +25,16 @@ post '/posts/new' do
     erb :'/unauthorized'
   end
 end
+
+get '/posts/:post_id/edit' do
+  @post = Post.find_by(id: params[:post_id])
+  erb :"/posts/edit"
+end
+
+put '/posts/:post_id/edit' do
+  @post = Post.find_by(id: params[:post_id])
+  @post.update_attributes(params[:post])
+  redirect '/users/current_user.id'
+end
+
+
