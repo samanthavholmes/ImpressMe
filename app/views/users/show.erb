@@ -1,0 +1,12 @@
+<h1>Welcome, <%=@user.username%>!</h1>
+
+<div class = "container">
+<a id="liked-posts-link" href="/users/<%=@user.id%>">Liked Posts</a><span>&nbsp;&nbsp;&nbsp;<a id="original-posts-link" href="/users/<%=@user.id%>">Original Posts</a></span>
+
+  <div id="liked-posts">
+  <ul>
+    <% @liked_posts.reverse.each do |post| %>
+    <%= erb :'/posts/_individual_post', layout: false, locals: {post: post} %>
+  <% end %>
+  </ul>
+</div>
