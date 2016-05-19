@@ -11,6 +11,12 @@ get '/posts/new' do
   end
 end
 
+get '/posts/:id' do
+  @post = Post.find_by(id: params[:id])
+  @posts = Post.all
+  erb :'/posts/index'
+end
+
 post '/posts/new' do
   if logged_in?
     @post = Post.new(params[:post].merge(user: current_user))
