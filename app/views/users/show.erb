@@ -1,12 +1,18 @@
-<h1>Welcome, <%=@user.username%>!</h1>
+<h1>Welcome!</h1>
 
-<div class = "container">
 <a id="liked-posts-link" href="/users/<%=@user.id%>">Liked Posts</a><span>&nbsp;&nbsp;&nbsp;<a id="original-posts-link" href="/users/<%=@user.id%>">Original Posts</a></span>
 
-  <div id="liked-posts">
-  <ul>
+
+  <ul id ="liked-posts" class="hidden">
+    <h3>Liked Posts</h3>
     <% @liked_posts.reverse.each do |post| %>
     <%= erb :'/posts/_individual_post', layout: false, locals: {post: post} %>
   <% end %>
   </ul>
-</div>
+
+  <ul id ="original-posts">
+    <h3>Original Posts</h3>
+    <% @original_posts.reverse.each do |post| %>
+    <%= erb :'/posts/_individual_post', layout: false, locals: {post: post} %>
+    <% end %>
+  </ul>

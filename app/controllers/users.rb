@@ -16,6 +16,6 @@ end
 get '/users/:id' do
   @user = User.find_by(id: params[:id])
   @liked_posts = @user.liked_posts
-  binding.pry
+  @original_posts = @user.posts
   erb :"/users/show"
 end
