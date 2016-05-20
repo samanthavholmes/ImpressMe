@@ -14,6 +14,8 @@ require 'bcrypt'
 require 'pry'
 require 'faker'
 
+
+
 require 'pg'
 require 'active_record'
 require 'logger'

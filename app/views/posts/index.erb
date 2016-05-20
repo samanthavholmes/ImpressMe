@@ -4,6 +4,11 @@
     <h4><a id = "new-post-link" href= '/posts/new'>Post your work!</a></h4>
   <% end %>
 
+  <form class= "search-by-tag-form" action= '/posts_index' method= "post">
+    <input type= "text" name= "body" placeholder= "tag name">
+      <input type= "submit" value = "Search">
+    </form>
+
   <ul>
     <% @posts.reverse.each do |post| %>
       <%= erb :'/posts/_individual_post', layout: false, locals: {post: post} %>

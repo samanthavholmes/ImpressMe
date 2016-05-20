@@ -18,6 +18,7 @@
   <title></title>
 </head>
 <body>
+  <nav>
   <a href="/">Home</a>
   <% if logged_in? %>
   <a href="/users/<%=current_user.id%>">Profile</a>
@@ -27,5 +28,6 @@
   <a href="/users/new">Sign Up</a>
   <% end %>
   <%= yield %>
+</nav>
 </body>
 </html>
