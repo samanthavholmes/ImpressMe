@@ -12,7 +12,11 @@ post '/posts/:post_id/comments/new' do
   if logged_in?
     @comment = Comment.new(params[:comment].merge(user: current_user, post: @post))
     if @comment.save
-      redirect "/posts/#{@post.id}"
+      if request.xhr?
+        erb :'/comments/_individual_comment', layout: false, locals: {comment: @comment}
+      else
+        redirect "/posts/#{@post.id}"
+      end
     else
       @errors = @comment.errors.full_messages
       erb :'/comments/new', layout: false, locals: {post: @post}

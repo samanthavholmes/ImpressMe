@@ -53,8 +53,19 @@ $('#make-text-post-button').on("click", function(e){
  })
  $(".posts").on("submit", ".new-comment-form", function(e){
   e.preventDefault();
- $(e.target).replaceWith('.new-comment-link');
-
+  postId = e.target.closest('div').id;
+  $(e.target).hide();
+  $("#comment-link-" + postId).show();
+  var url = '/posts/' + postId +'/comments/new';
+  var type = e.target.method
+  var data = $(e.target).serialize();
+  $.ajax({
+    url: url,
+    type: type,
+    data: data
+  }).done(function(comment){
+    $('#comment-list-' + postId).append(comment);
+  })
  })
  $('.delete-post-form').on("submit", function(e){
   e.preventDefault();

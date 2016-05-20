@@ -8,8 +8,9 @@
 
   <li><h2><%= post.body %></h2>
   <h3><%= post.caption %></h3>
+  <h3 class = "comments" id="comment-list-<%= post.id %>">Comments</h3>
   <% post.comments.each do |comment| %>
-    <li>"<%= comment.body %>&nbsp;"<h4>- <a href= "/users/<%=post.user.id%>"><%= comment.user.username %></a></h4></li>
+    <%= erb :'/comments/_individual_comment', layout: false, locals: {comment: comment} %>
     <% end %>
   <% post.tags.each do |tag| %>
     <a href= "/posts/<%= post.id %>/tags/<%= tag.id %>">#<%= tag.body %></a>&nbsp;
@@ -17,7 +18,7 @@
 <h4>Posted by <a href= "/users/<%=post.user.id%>"><%= post.user.username %></a></h4>
 
   <% if logged_in? %>
-    <h4><a class = "new-comment-link" href= '/posts/<%=post.id%>/comments/new'>Add comment</a></h4>
+    <h4><a class= "new-comment-link" id= comment-link-<%=post.id%> href= '/posts/<%=post.id%>/comments/new'>Add comment</a></h4>
   <% end %>
 
   <% if logged_in? && !current_user.liked_post?(post) && current_user != post.user %>
