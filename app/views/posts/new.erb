@@ -7,7 +7,8 @@
 
 <form class = "form" id= "new-post-form" action = '/posts/new' method= "post">
   <br><input class= "hidden" id = "image-form" type = "text" name= "image" placeholder= "Enter URL here">
-  <textarea class= "hidden" id ="text-post-form" type = "text" name= "post[body]">Your text post here</textarea><br>
+  <label class ="hidden" id = "text-post-label" for= "post[body]">Your text post here</label><br>
+  <textarea class= "hidden" id ="text-post-form" type = "text" name= "post[body]"></textarea><br>
   <br><label for= "post[caption]">Caption</label><br>
   <textarea type = "text" name= "post[caption]"></textarea><br><br>
   <p>Add tags as comma separated values:</p>
