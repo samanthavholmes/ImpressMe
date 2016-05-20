@@ -5,4 +5,8 @@ class Post < ActiveRecord::Base
   has_many :tags, through: :post_tags
   has_many :comments
   has_many :likes
+
+  def has_comments?
+    self.comments != []
+  end
 end

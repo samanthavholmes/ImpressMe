@@ -5,7 +5,11 @@ end
 
 get '/posts/new' do
   if logged_in?
-    erb :'/posts/new'
+    if request.xhr?
+      erb :'/posts/new', layout: false
+    else
+      erb :'/posts/new'
+    end
   else
     erb :'/unauthorized'
   end

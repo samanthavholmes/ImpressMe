@@ -1,7 +1,7 @@
 <h1 class = "title">Impress Me!</h1>
 
   <% if logged_in? %>
-    <h4><a id = "new-post-link" href= '/posts/new'>Post your work!</a></h4>
+    <span id = "new-post"><h4><a id = "new-post-link" href= '/posts/new'>Post your work!</a></h4></span>
   <% end %>
 
   <form class= "search-by-tag-form" action= '/posts_index' method= "post">
