@@ -1,6 +1,6 @@
 <%= erb :"/_errors", layout: false %>
 
-<form class = "form" class= "new-comment-form" action = '/posts/<%=post.id%>/comments/new' method= "post">
+<form class = "form new-comment-form" action = '/posts/<%=post.id%>/comments/new' method= "post">
   <label for= "comment[body]">Comment</label><br>
   <textarea type = "text" name= "comment[body]"></textarea><br><br>
     <input type="submit" value="Add comment">
