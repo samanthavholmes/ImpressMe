@@ -1,8 +1,8 @@
 <div class = "container posts" id = "<%=post.id%>">
 
-  <div id="post-image-container">
+  <div id="post-image-container" style="max-width: 400px">
     <% if post.image %>
-    <br><img src="<%= post.image.url %>" alt="<%= post.image.alt_text %>" width="400" height= "400">
+    <br><img src="<%= post.image.url %>" alt="<%= post.image.alt_text %>" style="max-width:100%">
     <% end %>
   </div>
 

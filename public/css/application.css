@@ -1,10 +1,26 @@
+body {
+  font-family: 'Lora', serif;
+  background-color: #3A5863;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+
 .container {
   margin: 20px auto;
   width: 800px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
-  font-family: 'Lobster';
   text-align: center;
+  background-color: #b2b2b2;
+  opacity: 50%;
+}
+
+.container a {
+  color: #696969;
 }
 
 .title {
@@ -13,4 +29,9 @@
 
 nav {
   text-align: center;
+}
+
+#post-image-container {
+  margin-left: auto;
+  margin-right: auto;
 }
