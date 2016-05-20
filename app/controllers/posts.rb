@@ -25,8 +25,8 @@ post '/posts/new' do
   if logged_in?
     @image = Image.create(url: params[:image])
     @post = Post.new(params[:post].merge(user: current_user, image: @image))
+    @post.tags << Tag.build_from_string(params[:tag])
     if @post.save
-      @post.tags << Tag.build_from_string(params[:tag])
       redirect '/posts'
     else
       @errors = @post.errors.full_messages
@@ -50,8 +50,9 @@ end
 
 delete '/posts/:id' do
   @post = Post.find_by(id: params[:id])
-  @post_tag = PostTag.find_by(post_id: params[:id])
+  @post_tag = PostTag.find_by(post_id: @post.id)
   if @post.user == current_user
+    Comment.find_by(post_id: @post.id).destroy
     @post_tag.destroy
     @post.destroy
     if request.xhr?
