@@ -7,10 +7,15 @@ end
 end
 
 40.times do
-  Post.create!(body: Faker::Placeholdit.image, caption: Faker::Lorem.sentence, user_id: Faker::Number.between(1,30))
+  Post.create!(image_id: Faker::Number.between(1,40), caption: Faker::Lorem.sentence, user_id: Faker::Number.between(1,30))
 end
+
+40.times do
+  Image.create!(url: Faker::Avatar.image)
+end
+
 20.times do
-  Comment.create!(body: Faker::Lorem.sentence, user_id:  Faker::Number.between(1,30), post_id: Faker::Number.between(1,40))
+  Comment.create!(body: Faker::Lorem.sentence, user_id:  Faker::Number.between(1,30), post_id: Faker::Number.between(1,80))
 end
 
 50.times do
@@ -19,7 +24,7 @@ end
 
 
 25.times do
-  PostTag.create!(tag_id: Faker::Number.between(1,50), post_id: Faker::Number.between(1,40))
+  PostTag.create!(tag_id: Faker::Number.between(1,50), post_id: Faker::Number.between(1,80))
 end
 
 15.times do

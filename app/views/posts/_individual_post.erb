@@ -1,11 +1,18 @@
 <div class = "container posts" id = "<%=post.id%>">
+
+  <div id="post-image-container">
+    <% if post.image %>
+    <br><img src="<%= post.image.url %>" alt="<%= post.image.alt_text %>" width="400" height= "400">
+    <% end %>
+  </div>
+
   <li><h2><%= post.body %></h2>
   <h3><%= post.caption %></h3>
   <% post.comments.each do |comment| %>
-    <li><%= comment.body %></li>
+    <li>"<%= comment.body %>&nbsp;"<h4>- <a href= "/users/<%=post.user.id%>"><%= comment.user.username %></a></h4></li>
     <% end %>
   <% post.tags.each do |tag| %>
-    <h3><a href= "/posts/<%= post.id %>/tags/<%= tag.id %>">#<%= tag.body %></a></h3>
+    <a href= "/posts/<%= post.id %>/tags/<%= tag.id %>">#<%= tag.body %></a>&nbsp;
     <% end %>
 <h4>Posted by <a href= "/users/<%=post.user.id%>"><%= post.user.username %></a></h4>
 

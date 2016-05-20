@@ -1,6 +1,9 @@
 <h1>Welcome!</h1>
 
-<a id="liked-posts-link" href="/users/<%=@user.id%>">Liked Posts</a><span>&nbsp;&nbsp;&nbsp;<a id="original-posts-link" href="/users/<%=@user.id%>">Original Posts</a></span>
+<a id="liked-posts-link" href="#">Liked Posts</a><span>&nbsp;&nbsp;&nbsp;
+<a id="original-posts-link" href="#">Original Posts</a></span>&nbsp;&nbsp;&nbsp;
+<a id="commented-posts-link" href="#">Posts commented on</a></span>
+
 
 
   <ul id ="liked-posts" class="hidden">
@@ -16,3 +19,11 @@
     <%= erb :'/posts/_individual_post', layout: false, locals: {post: post} %>
     <% end %>
   </ul>
+
+  <ul id ="commented-on-posts" class = "hidden">
+    <h3>Posts commented on by <%=@user.username%></h3>
+    <% @user.comments.reverse.each do |comment| %>
+    <%= erb :'/posts/_individual_post', layout: false, locals: {post: comment.post} %>
+    <% end %>
+  </ul>
+

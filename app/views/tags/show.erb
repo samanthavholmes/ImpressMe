@@ -1,4 +1,4 @@
-<h1>All posts with tag <%= @tag.body %></h1>
+<h1 class = "title">#<%= @tag.body %></h1>
 
   <ul id ="tagged-posts">
     <% @tag.posts.reverse.each do |post| %>
